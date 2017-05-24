@@ -19,7 +19,7 @@ mkdir build/coverage build/logs'''
             
           },
           "PHPMD": {
-            sh './vendor/bin/phpmd ./app xml ../build/phpmd.xml --reportfile ../build/logs/pmd.xml'
+            sh './vendor/bin/phpmd ./app xml ./build/phpmd.xml --reportfile ./build/logs/pmd.xml'
             
           }
         )
