@@ -5,7 +5,7 @@ pipeline {
       steps {
         sh '''rm -rf build/coverage build/logs
 mkdir build/coverage build/logs'''
-        sh 'composer install'
+        sh 'composer update'
         sh 'cp .env.example .env'
         sh '''php artisan key:generate
 '''
