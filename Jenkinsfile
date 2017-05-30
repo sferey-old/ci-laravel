@@ -15,7 +15,7 @@ mkdir build/coverage build/logs'''
       steps {
         parallel(
           "PHPUnit": {
-            sh './vendor/bin/phpunit --coverage-html ../build/coverage --coverage-clover ../build/logs/clover.xml --log-junit ../build/logs/phpunit.xml'
+            sh './vendor/bin/phpunit --log-junit ../build/logs/phpunit.xml'
             
           },
           "PHPMD": {
