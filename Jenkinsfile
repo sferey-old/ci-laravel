@@ -25,10 +25,15 @@ mkdir build/coverage build/logs'''
         )
       }
     }
+    stage('Rapport') {
+      steps {
+        pmd(pattern: 'build/logs/pmd.xml')
+        junit 'build/logs/phpunit.xml'
+      }
+    }
     stage('Deploy') {
       steps {
         echo 'Deploy'
-        pmd(pattern: 'build/logs/pmd.xml')
       }
     }
   }
