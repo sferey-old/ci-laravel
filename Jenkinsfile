@@ -34,6 +34,7 @@ mkdir build/coverage build/logs'''
     stage('Deploy') {
       steps {
         echo 'Deploy'
+        emailext(subject: '[JENKINS] CI-LARAVEL', body: 'Ready to deploy', to: 's.ferey@cleo-consulting.fr')
       }
     }
   }
