@@ -33,7 +33,7 @@ mkdir build/coverage build/logs'''
             allowMissing: false,
             alwaysLinkToLastBuild: false,
             keepAll: true,
-            reportDir: 'coverage',
+            reportDir: 'build/coverage',
             reportFiles: 'index.html',
             reportName: 'RCov Report'
           ]
