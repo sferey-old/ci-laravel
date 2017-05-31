@@ -29,7 +29,7 @@ mkdir build/coverage build/logs'''
       steps {
         pmd(pattern: 'build/logs/pmd.xml')
         junit 'build/logs/phpunit.xml'
-        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'build/coverage', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+        publishHTML(target: 'build/coverage/index.html')
       }
     }
     stage('Deploy') {
