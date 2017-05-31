@@ -25,7 +25,7 @@ mkdir build/coverage build/logs'''
         )
       }
     }
-    stage('Rapport') {
+    stage('Report') {
       steps {
         pmd(pattern: 'build/logs/pmd.xml')
         junit 'build/logs/phpunit.xml'
@@ -34,8 +34,8 @@ mkdir build/coverage build/logs'''
     stage('Deploy') {
       steps {
         echo 'Deploy'
-        step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 's.ferey@cleo-consulting.fr', sendToIndividuals: false]) 
         emailext(subject: '[JENKINS] CI-LARAVEL', body: 'Ready to deploy', to: 's.ferey@cleo-consulting.fr')
+        mail(subject: 'Deploy', body: 'Content Deploy', to: 's.ferey@cleo-consulting.fr')
       }
     }
   }
