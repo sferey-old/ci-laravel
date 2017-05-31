@@ -27,8 +27,17 @@ mkdir build/coverage build/logs'''
     }
     stage('Report') {
       steps {
-        pmd(pattern: 'build/logs/pmd.xml')
-        junit 'build/logs/junit.xml'
+        parallel(
+          "": {
+            pmd(pattern: 'build/logs/pmd.xml')
+            junit 'build/logs/junit.xml'
+            
+          },
+          "Documentation": {
+            sh './vendor/bin/phpdox --file build/phpdox.xml'
+            
+          }
+        )
       }
     }
     stage('Deploy') {
