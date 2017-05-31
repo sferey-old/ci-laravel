@@ -29,7 +29,14 @@ mkdir build/coverage build/logs'''
       steps {
         pmd(pattern: 'build/logs/pmd.xml')
         junit 'build/logs/phpunit.xml'
-        publishHTML(target: 'build/coverage/index.html')
+        publishHTML target: [
+            allowMissing: false,
+            alwaysLinkToLastBuild: false,
+            keepAll: true,
+            reportDir: 'coverage',
+            reportFiles: 'index.html',
+            reportName: 'RCov Report'
+          ]
       }
     }
     stage('Deploy') {
