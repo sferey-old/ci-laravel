@@ -15,7 +15,7 @@ mkdir build/coverage build/logs'''
       steps {
         parallel(
           "PHPUnit": {
-            sh './vendor/bin/phpunit --log-junit ../build/logs/phpunit.xml'
+            sh './vendor/bin/phpunit'
             
           },
           "PHPMD": {
@@ -28,7 +28,7 @@ mkdir build/coverage build/logs'''
     stage('Report') {
       steps {
         pmd(pattern: 'build/logs/pmd.xml')
-        junit 'build/logs/phpunit.xml'
+        junit 'build/logs/junit.xml'
       }
     }
     stage('Deploy') {
