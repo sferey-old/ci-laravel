@@ -21,6 +21,10 @@ mkdir build/coverage build/logs'''
           "PHPMD": {
             sh './vendor/bin/phpmd ./app xml ./build/phpmd.xml --reportfile ./build/logs/pmd.xml'
             
+          },
+          "PHPCode_Sniffer": {
+            sh './vendor/bin/phpcs'
+            
           }
         )
       }
@@ -28,7 +32,7 @@ mkdir build/coverage build/logs'''
     stage('Report') {
       steps {
         parallel(
-          "": {
+          "error": {
             pmd(pattern: 'build/logs/pmd.xml')
             junit 'build/logs/junit.xml'
             
