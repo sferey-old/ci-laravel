@@ -29,19 +29,12 @@ mkdir build/coverage build/logs'''
       steps {
         pmd(pattern: 'build/logs/pmd.xml')
         junit 'build/logs/phpunit.xml'
-        publishHTML target: [
-            allowMissing: false,
-            alwaysLinkToLastBuild: false,
-            keepAll: true,
-            reportDir: 'build/coverage',
-            reportFiles: 'index.html',
-            reportName: 'RCov Report'
-          ]
       }
     }
     stage('Deploy') {
       steps {
         echo 'Deploy'
+        step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 's.ferey@cleo-consulting.fr', sendToIndividuals: false]) 
         emailext(subject: '[JENKINS] CI-LARAVEL', body: 'Ready to deploy', to: 's.ferey@cleo-consulting.fr')
       }
     }
