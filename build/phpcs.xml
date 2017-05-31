@@ -16,7 +16,7 @@
        patterns on the command line.
 
        The following two tags are equivalent to the command line
-       argument: --ignore=*/tests/*,*/data/*
+       argument: - -ignore=*/tests/*,*/data/*
     -->
     <exclude-pattern>*/tests/*</exclude-pattern>
     <exclude-pattern>*/data/*</exclude-pattern>
