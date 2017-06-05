@@ -43,7 +43,6 @@ pipeline {
       steps {
         echo 'Deploy'
         emailext(subject: '[JENKINS] CI-LARAVEL', body: 'Ready to deploy', to: 's.ferey@cleo-consulting.fr')
-        mail(subject: 'Deploy', body: 'Content Deploy', to: 's.ferey@cleo-consulting.fr')
       }
     }
   }
