@@ -3,12 +3,11 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh '''rm -rf build/coverage build/logs
-mkdir build/coverage build/logs'''
+        sh 'rm -rf build/coverage build/logs'
+        sh 'mkdir build/coverage build/logs'
         sh 'composer update'
         sh 'cp .env.example .env'
-        sh '''php artisan key:generate
-'''
+        sh 'php artisan key:generate'
       }
     }
     stage('Test') {
@@ -16,7 +15,6 @@ mkdir build/coverage build/logs'''
         parallel(
           "PHPUnit": {
             sh './vendor/bin/phpunit'
-            
           },
           "PHPMD": {
             sh './vendor/bin/phpmd ./app xml ./build/phpmd.xml --reportfile ./build/logs/pmd.xml'
