@@ -4,6 +4,7 @@
 /storage/*.key
 /build/coverage/*
 /build/logs/*
+/build/api/*
 /vendor
 /.idea
 /.vagrant
