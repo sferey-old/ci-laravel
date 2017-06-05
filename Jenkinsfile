@@ -15,10 +15,12 @@ pipeline {
         parallel(
           "PHPUnit": {
             sh './vendor/bin/phpunit'
+            junit 'build/logs/junit.xml'
             
           },
           "PHPMD": {
             sh './vendor/bin/phpmd ./app xml ./build/phpmd.xml --reportfile ./build/logs/pmd.xml'
+            pmd(pattern: 'build/logs/pmd.xml')
             
           },
           "PHPCode_Sniffer": {
@@ -32,19 +34,9 @@ pipeline {
         )
       }
     }
-    stage('Report') {
+    stage('Documentation') {
       steps {
-        parallel(
-          "Publication": {
-            pmd(pattern: 'build/logs/pmd.xml')
-            junit 'build/logs/junit.xml'
-            
-          },
-          "Documentation": {
-            sh './vendor/bin/phpdox --file build/phpdox.xml'
-            
-          }
-        )
+        sh './vendor/bin/phpdox --file build/phpdox.xml'
       }
     }
     stage('Deploy') {
