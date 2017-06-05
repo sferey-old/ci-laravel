@@ -29,6 +29,7 @@ pipeline {
           },
           "PHPLOC": {
             sh './vendor/bin/phploc --log-csv build/logs/phploc.csv --log-xml build/logs/phploc.xml app'
+            junit 'build/logs/phploc.xml'
             
           }
         )
