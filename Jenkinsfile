@@ -24,6 +24,10 @@ pipeline {
           "PHPCode_Sniffer": {
             sh './vendor/bin/phpcs'
             
+          },
+          "": {
+            sh './vendor/bin/phploc'
+            
           }
         )
       }
