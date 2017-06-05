@@ -32,7 +32,7 @@ mkdir build/coverage build/logs'''
     stage('Report') {
       steps {
         parallel(
-          "error": {
+          "Publication": {
             pmd(pattern: 'build/logs/pmd.xml')
             junit 'build/logs/junit.xml'
             
