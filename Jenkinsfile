@@ -38,7 +38,7 @@ mkdir build/coverage build/logs'''
             
           },
           "Documentation": {
-            sh './vendor/bin/phpdox --file build/phpdox.xml'
+            sh './vendor/bin/phpdox --skel --file build/phpdox.xml'
             
           }
         )
