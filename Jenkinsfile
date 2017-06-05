@@ -15,6 +15,7 @@ pipeline {
         parallel(
           "PHPUnit": {
             sh './vendor/bin/phpunit'
+            
           },
           "PHPMD": {
             sh './vendor/bin/phpmd ./app xml ./build/phpmd.xml --reportfile ./build/logs/pmd.xml'
@@ -37,6 +38,7 @@ pipeline {
           },
           "Documentation": {
             sh './vendor/bin/phpdox --file build/phpdox.xml'
+            
           }
         )
       }
