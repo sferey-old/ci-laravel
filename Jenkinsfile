@@ -25,8 +25,8 @@ pipeline {
             sh './vendor/bin/phpcs'
             
           },
-          "": {
-            sh './vendor/bin/phploc'
+          "PHPLOC": {
+            sh './vendor/bin/phploc --log-csv build/logs/phploc.csv --log-xml build/logs/ph ploc.xml app'
             
           }
         )
